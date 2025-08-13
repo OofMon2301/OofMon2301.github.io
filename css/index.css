@@ -1,4 +1,6 @@
-/* Homepage-specific styles moved from style.css */
+/* =====================
+   Homepage Header
+   ===================== */
 .header-block {
   text-align: center;
   padding: 48px 16px 24px 16px;
@@ -19,6 +21,9 @@
   margin-bottom: 0;
 }
 
+/* =====================
+   Homepage Content Blocks
+   ===================== */
 .content-blocks {
   display: flex;
   flex-wrap: wrap;
@@ -46,11 +51,25 @@
   background: #f5faff;
 }
 
+/* =====================
+   Homepage Animations
+   ===================== */
 @keyframes fadeIn {
   to { opacity: 1; }
 }
 
-/* Rectangle preview image and figure styling */
+/* Staggered fade-in for blocks */
+.content-block.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+.content-block.fade-in:nth-child(1) { animation-delay: 0.2s; }
+.content-block.fade-in:nth-child(2) { animation-delay: 0.5s; }
+.content-block.fade-in:nth-child(3) { animation-delay: 0.8s; }
+
+/* =====================
+   Homepage Preview Images
+   ===================== */
 .block-preview-figure {
   margin: 0 0 16px 0;
   padding: 0;
@@ -77,26 +96,9 @@
   transform: scale(1.04);
 }
 
-/* Staggered fade-in for blocks */
-.content-block.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.2s forwards;
-}
-.content-block.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.content-block.fade-in:nth-child(2) { animation-delay: 0.5s; }
-.content-block.fade-in:nth-child(3) { animation-delay: 0.8s; }
-
-/* Enhanced hover/focus for blocks */
-.content-block {
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-}
-.content-block:hover, .content-block:focus {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(44,62,80,0.16);
-  background: #f5faff;
-}
-
-/* Fade/transition for gallery placeholder */
+/* =====================
+   Homepage Gallery Placeholder
+   ===================== */
 .gallery-placeholder {
   background: repeating-linear-gradient(45deg, #e0eafc, #e0eafc 10px, #cfdef3 10px, #cfdef3 20px);
   border-radius: 8px;
@@ -111,6 +113,9 @@
   opacity: 1;
 }
 
+/* =====================
+   Homepage Footer
+   ===================== */
 .footer-block {
   text-align: center;
   padding: 24px 16px;
@@ -122,6 +127,9 @@
   font-size: 1rem;
 }
 
+/* =====================
+   Homepage Responsive Styles
+   ===================== */
 @media (max-width: 900px) {
   .content-blocks {
     flex-direction: column;

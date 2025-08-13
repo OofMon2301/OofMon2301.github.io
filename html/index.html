@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OofMon2301's Home Page</title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <script src="/js/index.js" defer></script>
 </head>
 <body>
     <div class="main-bg">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-container">
+            <a href="/html/index.html" class="navbar-logo">OofMon2301</a>
+            <button class="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+              <span class="navbar-toggle-bar"></span>
+              <span class="navbar-toggle-bar"></span>
+              <span class="navbar-toggle-bar"></span>
+            </button>
+            <ul class="navbar-links">
+              <li><a href="/html/index.html">Home</a></li>
+              <li><a href="/html/contacts.html">Contacts</a></li>
+              <li><a href="/html/404.html">404</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+            </ul>
+          </div>
+        </nav>
         <header class="header-block">
             <h1>Welcome to OofMon2301's Home Page</h1>
             <p class="subtitle">A modern, sleek homepage for web development exploration.</p>
@@ -28,7 +45,7 @@
                 <h2>Explore</h2>
                 <p>Feel free to explore and learn more about web development!</p>
             </section>
-            <section class="content-block fade-in">
+            <section class="content-block fade-in" id="gallery">
                 <figure class="block-preview-figure">
                   <img src="/img/nishanul_nishat-05-06-2023-0001.jpg" alt="Gallery preview" class="block-preview-img">
                 </figure>
