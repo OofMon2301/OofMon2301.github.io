@@ -1,6 +1,0 @@
-.link-secondary:hover, .link-secondary:focus {
-  color: RGBA(207, 212, 197, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(255, 219, 51, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(255, 219, 51, var(--bs-link-underline-opacity, 1)) !important;
-}
-
