@@ -6,7 +6,9 @@
     <title>OofMon2301's Home Page</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
     <script src="/js/index.js" defer></script>
+    <script src="/js/sidebar.js" defer></script>
 </head>
 <body>
     <div class="main-bg">
@@ -26,26 +28,97 @@
             </ul>
           </div>
         </nav>
+        <aside class="sidebar collapsed" tabindex="0" aria-label="Expand sidebar">
+            <div class="sidebar-toggle-area">
+                <button class="sidebar-toggle" aria-label="Expand sidebar">
+                    <span class="sidebar-toggle-icon">&#8250;</span>
+                </button>
+            </div>
+            <div class="scroll-progress">
+                <span class="scroll-percent"></span>
+                <div class="scroll-bar"></div>
+                <div class="scroll-extra-stats">
+                  <!-- Extra stats shown only when expanded -->
+                  <div class="scroll-chars" style="display:none"></div>
+                  <div class="scroll-words" style="display:none"></div>
+                  <div class="scroll-sections" style="display:none"></div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="sidebar-widgets">
+                    <nav class="widget-nav">
+                      <a href="#about">About</a>
+                      <a href="#projects">Projects</a>
+                      <a href="#gallery">Gallery</a>
+                      <a href="#skills">Skills</a>
+                      <a href="#fun-facts">Fun Facts</a>
+                      <a href="#testimonials">Testimonials</a>
+                    </nav>
+                    <div class="widget-fact" id="sidebar-fact">Loading fun fact...</div>
+                    <div class="sidebar-placeholder">Sidebar widgets coming soon...</div>
+                </div>
+            </div>
+            <!-- Settings Button at Bottom -->
+            <button class="sidebar-settings-btn" aria-label="Open settings" tabindex="0">⚙️ Settings</button>
+        </aside>
+        <!-- Settings Modal -->
+        <div class="settings-modal" id="settings-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+            <div class="settings-modal-content">
+                <button class="settings-modal-close" aria-label="Close settings">&times;</button>
+                <h2>Settings</h2>
+                <div class="settings-options">
+                    <label class="settings-toggle">
+                        <input type="checkbox" id="toggle-blur-effect">
+                        <span>Enable Blur Effect</span>
+                    </label>
+                    <label class="settings-toggle">
+                        <input type="checkbox" id="toggle-scroll-animations">
+                        <span>Enable Scroll Animations</span>
+                    </label>
+                </div>
+            </div>
+        </div>
         <header class="header-block">
             <h1>Welcome to OofMon2301's Home Page</h1>
             <p class="subtitle">A modern, sleek homepage for web development exploration.</p>
         </header>
         <main class="content-blocks">
-            <section class="content-block fade-in">
+            <section class="content-block fade-in" id="about">
                 <figure class="block-preview-figure">
                   <img src="/img/clipboard-image.png" alt="About preview" class="block-preview-img">
                 </figure>
                 <h2>About</h2>
                 <p>This is a simple HTML page created as a demonstration. Future features will include animations, images, and more!</p>
             </section>
-            <section class="content-block fade-in">
+            <section class="content-block fade-in" id="projects">
                 <figure class="block-preview-figure">
-                  <img src="/img/fish.jpeg" alt="Explore preview" class="block-preview-img">
+                  <img src="/img/clipboard-image-2.png" alt="Projects preview" class="block-preview-img">
                 </figure>
-                <h2>Explore</h2>
-                <p>Feel free to explore and learn more about web development!</p>
+                <h2>Projects</h2>
+                <p>Check out some cool web projects and experiments. More coming soon!</p>
             </section>
-            <section class="content-block fade-in" id="gallery">
+            <section class="content-block fade-in" id="skills">
+                <figure class="block-preview-figure">
+                  <img src="/img/nishanul_nishat-05-06-2023-0008.jpg" alt="Skills preview" class="block-preview-img">
+                </figure>
+                <h2>Skills</h2>
+                <p>HTML, CSS, JavaScript, and more. Always learning and building new things!</p>
+            </section>
+            <section class="content-block fade-in" id="fun-facts">
+                <figure class="block-preview-figure">
+                  <img src="/img/clipboard-image-1.png" alt="Fun Facts preview" class="block-preview-img">
+                </figure>
+                <h2>Fun Facts</h2>
+                <p>Did you know? The first website was published in 1991. More fun facts coming soon!</p>
+            </section>
+            <section class="content-block fade-in" id="testimonials">
+                <figure class="block-preview-figure">
+                  <img src="/img/illustrations/404.svg" alt="Testimonials preview" class="block-preview-img">
+                </figure>
+                <h2>Testimonials</h2>
+                <p>"This homepage is awesome!" - Future Visitor</p>
+            </section>
+            <section class="content-block fade-in">
                 <figure class="block-preview-figure">
                   <img src="/img/nishanul_nishat-05-06-2023-0001.jpg" alt="Gallery preview" class="block-preview-img">
                 </figure>

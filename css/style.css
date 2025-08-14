@@ -10,6 +10,7 @@ html, body {
 }
 
 .main-bg {
+  margin-left: 80px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -20,6 +21,7 @@ html, body {
    ===================== */
 @media (max-width: 900px) {
   .main-bg {
+    margin-left: 0;
     min-height: 100vh;
   }
 }

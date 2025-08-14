@@ -4,7 +4,7 @@
 .header-block {
   text-align: center;
   padding: 48px 16px 24px 16px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(248,250,252,0.85); /* off-white */
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
   border-radius: 0 0 24px 24px;
 }
@@ -27,28 +27,37 @@
 .content-blocks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 32px;
   padding: 40px 16px;
+  flex: 1; /* Make main content grow to fill space */
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .content-block {
-  background: #fff;
+  background: #f8fafc; /* off-white */
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(44,62,80,0.08);
   padding: 32px 24px;
   min-width: 280px;
-  max-width: 400px;
-  flex: 1 1 320px;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  max-width: 360px;
+  flex: 0 1 28%;
+  transition: transform 0.8s cubic-bezier(.4,0,.2,1), box-shadow 0.5s cubic-bezier(.4,0,.2,1), background 0.5s, opacity 0.8s cubic-bezier(.4,0,.2,1);
   opacity: 0;
-  animation: fadeIn 1.2s forwards;
+  transform: translateY(40px);
+  /* animation: fadeIn 1.2s forwards; -- removed for scroll animation */
+}
+
+.content-block.in-view {
+  opacity: 1;
+  transform: none;
 }
 
 .content-block:hover, .content-block:focus {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 8px 32px rgba(44,62,80,0.16);
-  background: #f5faff;
+  background: #f5faff; /* slightly blue off-white */
 }
 
 /* =====================
@@ -60,8 +69,8 @@
 
 /* Staggered fade-in for blocks */
 .content-block.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.2s forwards;
+  /* opacity: 0; */
+  /* animation: fadeIn 1.2s forwards; */
 }
 .content-block.fade-in:nth-child(1) { animation-delay: 0.2s; }
 .content-block.fade-in:nth-child(2) { animation-delay: 0.5s; }
@@ -119,7 +128,7 @@
 .footer-block {
   text-align: center;
   padding: 24px 16px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(248,250,252,0.85); /* off-white */
   box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
   border-radius: 24px 24px 0 0;
   margin-top: auto;
@@ -130,11 +139,24 @@
 /* =====================
    Homepage Responsive Styles
    ===================== */
+@media (max-width: 1200px) {
+  .content-blocks {
+    max-width: 1000px;
+  }
+  .content-block {
+    flex: 0 1 44%;
+    max-width: 440px;
+  }
+}
 @media (max-width: 900px) {
+  .main-bg {
+    margin-left: 0;
+  }
   .content-blocks {
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    max-width: 98vw;
   }
   .content-block {
     max-width: 90vw;
@@ -142,4 +164,33 @@
   .block-preview-img {
     max-width: 98vw;
   }
+}
+
+/* =====================
+   Content Block Focus/Blur Effect
+   ===================== */
+.focus-blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  pointer-events: none;
+  background: rgba(44,62,80,0.04); /* much lighter dim */
+  backdrop-filter: blur(12px) brightness(0.98); /* more blur, less brightness change */
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1);
+  opacity: 1;
+}
+.focus-blur-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content-block-focused {
+  z-index: 999;
+  position: relative;
+  transform: scale(1.10) translateY(-16px);
+  box-shadow: 0 16px 48px rgba(44,62,80,0.22), 0 0 0 6px #e3f2fd;
+  transition: transform 0.8s cubic-bezier(.4,0,.2,1), box-shadow 0.5s cubic-bezier(.4,0,.2,1);
 }
