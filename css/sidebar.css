@@ -1,4 +1,6 @@
-/* Sidebar Styles - Refined Scroll Progress Bar & Widgets */
+/* =====================
+   Sidebar Component Styles
+   ===================== */
 .sidebar {
   position: fixed;
   top: 0;
@@ -132,6 +134,9 @@
   display: flex;
 }
 
+/* =====================
+   Sidebar Widgets & Navigation
+   ===================== */
 .sidebar-widgets {
   width: 100%;
   display: flex;
@@ -217,10 +222,10 @@
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(44,62,80,0.18);
   min-width: 320px;
-  max-width: 98vw;
-  width: 1080px;
+  max-width: 90vw;
+  width: 600px;
   z-index: 2000;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: 0;
@@ -268,6 +273,10 @@
   height: 22px;
   accent-color: #2196f3;
 }
+
+/* =====================
+   Responsive Styles
+   ===================== */
 @media (max-width: 1200px) {
   .settings-modal {
     width: 90vw;
@@ -275,7 +284,7 @@
     max-width: 98vw;
   }
   .sidebar.expanded {
-    width: 90vw;
+    width: 320px;
     min-width: 220px;
     max-width: 98vw;
   }

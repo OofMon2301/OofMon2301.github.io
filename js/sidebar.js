@@ -1,3 +1,7 @@
+// =====================
+// Sidebar Scroll Progress & Stats
+// =====================
+
 // Sidebar scroll progress logic
 function updateScrollProgressSidebar() {
   const scrollBar = document.querySelector('.scroll-bar');
@@ -15,6 +19,50 @@ function updateScrollProgressSidebar() {
 }
 window.addEventListener('scroll', updateScrollProgressSidebar);
 document.addEventListener('DOMContentLoaded', updateScrollProgressSidebar);
+
+// Stats calculation
+function updateSidebarStats() {
+  const charsEl = document.querySelector('.scroll-chars');
+  const wordsEl = document.querySelector('.scroll-words');
+  const sectionsEl = document.querySelector('.scroll-sections');
+  if (!sidebar.classList.contains('expanded')) {
+    if (charsEl) charsEl.style.display = 'none';
+    if (wordsEl) wordsEl.style.display = 'none';
+    if (sectionsEl) sectionsEl.style.display = 'none';
+    return;
+  }
+  // Calculate stats from visible content blocks
+  const blocks = document.querySelectorAll('.content-block');
+  let chars = 0, words = 0, sections = 0;
+  blocks.forEach(block => {
+    const rect = block.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const text = block.textContent || '';
+      chars += text.length;
+      words += text.trim().split(/\s+/).length;
+      sections++;
+    }
+  });
+  if (charsEl) {
+    charsEl.textContent = `Characters read: ${chars}`;
+    charsEl.style.display = 'block';
+  }
+  if (wordsEl) {
+    wordsEl.textContent = `Words read: ${words}`;
+    wordsEl.style.display = 'block';
+  }
+  if (sectionsEl) {
+    sectionsEl.textContent = `Sections viewed: ${sections}`;
+    sectionsEl.style.display = 'block';
+  }
+}
+
+window.addEventListener('scroll', updateSidebarStats);
+document.addEventListener('DOMContentLoaded', updateSidebarStats);
+
+// =====================
+// Sidebar Fun Fact Widget
+// =====================
 
 // Fun facts for sidebar widget
 const funFacts = [
@@ -37,6 +85,10 @@ function setRandomFact() {
   }
 }
 document.addEventListener('DOMContentLoaded', setRandomFact);
+
+// =====================
+// Sidebar Expand/Collapse Logic
+// =====================
 
 document.addEventListener('DOMContentLoaded', function () {
   const sidebar = document.querySelector('.sidebar');
@@ -65,49 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  // Stats calculation
-  function updateSidebarStats() {
-    const charsEl = document.querySelector('.scroll-chars');
-    const wordsEl = document.querySelector('.scroll-words');
-    const sectionsEl = document.querySelector('.scroll-sections');
-    if (!sidebar.classList.contains('expanded')) {
-      if (charsEl) charsEl.style.display = 'none';
-      if (wordsEl) wordsEl.style.display = 'none';
-      if (sectionsEl) sectionsEl.style.display = 'none';
-      return;
-    }
-    // Calculate stats from visible content blocks
-    const blocks = document.querySelectorAll('.content-block');
-    let chars = 0, words = 0, sections = 0;
-    blocks.forEach(block => {
-      const rect = block.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        const text = block.textContent || '';
-        chars += text.length;
-        words += text.trim().split(/\s+/).length;
-        sections++;
-      }
-    });
-    if (charsEl) {
-      charsEl.textContent = `Characters read: ${chars}`;
-      charsEl.style.display = 'block';
-    }
-    if (wordsEl) {
-      wordsEl.textContent = `Words read: ${words}`;
-      wordsEl.style.display = 'block';
-    }
-    if (sectionsEl) {
-      sectionsEl.textContent = `Sections viewed: ${sections}`;
-      sectionsEl.style.display = 'block';
-    }
-  }
-
-  window.addEventListener('scroll', updateSidebarStats);
-  document.addEventListener('DOMContentLoaded', updateSidebarStats);
 });
 
-// Settings modal logic
+// =====================
+// Settings Modal Logic
+// =====================
+
 function setupSettingsModal() {
   const settingsBtn = document.querySelector('.sidebar-settings-btn');
   const modal = document.getElementById('settings-modal');

@@ -1,7 +1,13 @@
-// Scroll-triggered animations for content blocks
+// =====================
+// Homepage Scroll Animations
+// =====================
 function handleScrollAnimations() {
-  if (localStorage.getItem('scrollAnimationsEnabled') === 'false') return;
   const blocks = document.querySelectorAll('.content-block');
+  if (localStorage.getItem('scrollAnimationsEnabled') === 'false') {
+    // If animations are disabled, show all blocks
+    blocks.forEach(block => block.classList.add('in-view'));
+    return;
+  }
   blocks.forEach(block => {
     const rect = block.getBoundingClientRect();
     if (rect.top < window.innerHeight - 60 && rect.bottom > 60) {
@@ -19,7 +25,9 @@ window.addEventListener('settingsChanged', (e) => {
   }
 });
 
-// Scroll progress bar for sidebar
+// =====================
+// Homepage Scroll Progress Bar
+// =====================
 function updateScrollProgress() {
   const scrollBar = document.querySelector('.scroll-bar');
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -33,7 +41,9 @@ function updateScrollProgress() {
 window.addEventListener('scroll', updateScrollProgress);
 document.addEventListener('DOMContentLoaded', updateScrollProgress);
 
-// Focus/blur effect for content blocks (full-page blur)
+// =====================
+// Homepage Content Block Focus/Blur Effect
+// =====================
 function setupContentBlockFocus() {
   if (localStorage.getItem('blurEffectEnabled') === 'false') return;
   const blocks = document.querySelectorAll('.content-block');

@@ -1,7 +1,11 @@
+// =====================
+// Navbar Toggle Logic
+// =====================
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.querySelector('.navbar-toggle');
   const links = document.querySelector('.navbar-links');
 
+  // Toggle navbar menu (mobile)
   if (toggle && links) {
     toggle.addEventListener('click', function () {
       const isOpen = links.classList.toggle('open');
@@ -21,4 +25,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
